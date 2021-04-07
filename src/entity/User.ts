@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ID, ObjectType, Root } from 'type-graphql';
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
 
 @ObjectType() // Converts TS to GraphQL type
@@ -20,8 +20,12 @@ class User extends BaseEntity { // Extending BaseEntity allows for typeorm DB fu
   @Column('text', { unique: true })
   email: string;
 
+  // Simple fields as part of the entity
+  // More complex fields with async in the Resolvers as a FieldResolver
   @Field() // Only part of GQL schema, not DB
-  name: string;
+  name(@Root() parent: User): string {
+    return `${parent.firstName} ${parent.lastName}`;
+  }
 
   @Column() // Only in DB, not part of GQL schema
   password: string;
