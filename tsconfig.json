@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es6",
     "module": "commonjs",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"], // Last item for apollo
@@ -7,7 +8,6 @@
     "outDir": "./dist",
     "moduleResolution": "node",
     "declaration": false,
-
     "composite": false,
     "removeComments": true,
     "noImplicitAny": true,
@@ -21,10 +21,11 @@
     "allowSyntheticDefaultImports": false,
     "emitDecoratorMetadata": true, // For type-graphql
     "experimentalDecorators": true, // For type-graphql
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "rootDir": "src"
+    "skipLibCheck": true
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }
