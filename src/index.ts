@@ -1,24 +1,18 @@
 import { ApolloServer } from 'apollo-server-express';
 import * as Express from 'express';
-import { buildSchema, Query, Resolver } from 'type-graphql';
+import { buildSchema } from 'type-graphql';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 
-const PORT = 4000;
+import { RegisterResolver } from './module/user/Register';
 
-@Resolver()
-class HelloResolver {
-  @Query(() => String, { name: 'helloWorld' }) // GQL type
-  async hello() {
-    return 'Hello World!';
-  }
-}
+const PORT = 4000;
 
 const main = async () => {
   await createConnection();
 
   const schema = await buildSchema({
-    resolvers: [HelloResolver],
+    resolvers: [RegisterResolver],
   });
 
   const apolloServer = new ApolloServer({ schema });
