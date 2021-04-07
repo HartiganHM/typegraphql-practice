@@ -18,7 +18,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true, // Allows removal of import * as
+    "esModuleInterop": true, // Allows removal of import * as
     "emitDecoratorMetadata": true, // For type-graphql
     "experimentalDecorators": true, // For type-graphql
     "skipLibCheck": true
