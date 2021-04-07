@@ -23,7 +23,7 @@ class User extends BaseEntity { // Extending BaseEntity allows for typeorm DB fu
   @Field() // Only part of GQL schema, not DB
   name: string;
 
-  @Column()
+  @Column() // Only in DB, not part of GQL schema
   password: string;
 }
 
